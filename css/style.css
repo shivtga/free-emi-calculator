@@ -386,3 +386,7 @@ footer p {
   align-items: center;    /* centers vertically */
 
 }
+
+.chart-placeholder{
+    font-size: 0;
+}
