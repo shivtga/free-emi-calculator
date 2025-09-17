@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free EMI Calculator</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <div class="logo-icon">F</div>
+                <span>Free EMI Calculator</span>
+            </div>
+            <div class="language-selector">
+                <span>English</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <h1>SBI Home Loan EMI Calculator</h1>
+            <div class="calculator-section">
+                <div class="calculator-section">
+                    <div class="chart-container">
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <div class="color-box principal-color"></div>
+                                <span>Principal amount</span>
+                            </div>
+                            <div class="legend-item">
+                                <div class="color-box interest-color"></div>
+                                <span>Interest amount</span>
+                            </div>
+                        </div>
+                        <div class="chart-placeholder">
+                            <!-- Placeholder for actual chart (e.g., Canvas or SVG) -->
+                        </div>
+                    </div>
+                    <div class="calculator-inputs">
+                        <div class="input-group">
+                            <label for="currency">Select Your Currency:</label>
+                            <div class="input-field">
+                                <select id="currency">
+                                    <option value="$">$</option>
+                                    <option value="€">€</option>
+                                    <option value="£">£</option>
+                                    <option value="₹">₹</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <label for="loanAmount">Loan Amount</label>
+                            <div class="input-field">
+                                <span id="currencySymbol1">$</span>
+                                <input type="number" id="loanAmount" value="100000" min="0">
+                            </div>
+                        </div>
+                        <div class="slider-group">
+                            <label for="rateOfInterest">Rate of interest(p.a):</label>
+                            <div class="slider-container">
+                                <input type="range" id="rateOfInterest" class="slider" min="1" max="30" value="12.5" step="0.1">
+                                <div class="slider-value" id="rateOfInterestValue">12.5</div>
+                                <div class="slider-unit">PERCENT %</div>
+                            </div>
+                        </div>
+                        <div class="slider-group">
+                            <label for="loanTenure">Loan Tenure: (max 30)</label>
+                            <div class="slider-container">
+                                <input type="range" id="loanTenure" class="slider" min="1" max="30" value="6">
+                                <div class="slider-value" id="loanTenureValue">6</div>
+                                <div class="slider-unit">YEARS</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emi-result">
+                    <h2>EMI Calculator Result:</h2>
+                    <div class="result-item">
+                        <span class="label">Monthly EMI:</span>
+                        <span class="value" id="monthlyEMI">$1,981</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Principal amount:</span>
+                        <span class="value" id="principalAmount">$100,000</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Total interest:</span>
+                        <span class="value" id="totalInterest">$42,640</span>
+                    </div>
+                    <div class="result-item">
+                        <span class="label">Total amount:</span>
+                        <span class="value" id="totalAmount">$142,640</span>
+                    </div>
+                    <div class="social-share">
+                        <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                        <button class="twitter"><i class="fab fa-twitter"></i> Twitter</button>
+                        <button class="email"><i class="fas fa-envelope"></i> E-Mail</button>
+                        <button class="pinterest"><i class="fab fa-pinterest"></i> Pinterest</button>
+                        <button class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                        <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                        <button class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</button>
+                    </div>
+                </div>
+            </div>
+            <div class="info-section">
+                <h2>What is the SBI Home Loan EMI Calculator in 2025?</h2>
+                <p>The SBI Home Loan EMI calculator is a financial tool used to calculate the monthly installment (EMI) that one has to pay for a home loan. It considers factors such as the loan amount, interest rate, and loan tenure to arrive at the EMI. The SBI Home Loan EMI calculator in 2025, therefore, is essentially a computer program or an online tool that can be used to calculate the EMI amount for home loans taken in 2025, based on the current interest rates and other factors.</p>
+                <p>The SBI Home Loan EMI calculator is an easy-to-use tool that allows you to calculate the EMI amount for a home loan, by taking into account the loan amount, interest rate, and loan tenure. By entering these details, the SBI Home Loan EMI calculator instantly gives you the monthly installment amount that you would need to pay to repay the loan.</p>
+                <p>In 2025, you can use the SBI Home Loan EMI calculator to plan your home loan repayments and determine the amount of loan you can afford to take. It can also help you compare different home loan options and choose the one that best suits your financial needs and budget. Many financial institutions, banks, and online websites offer SBI Home Loan EMI calculators, which are easily accessible and user-friendly.</p>
+
+                <h2>Features of EMI Calculator</h2>
+                <p>The features of an EMI calculator in 2025 can vary depending on the provider. However, the following are some common features:</p>
+                <button class="read-more-button">Read More...</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/">Home</a> |
+                <a href="/about.html">About</a> |
+                <a href="/disclaimer.html">Disclaimer</a> |
+                <a href="/privacy-policy.html">Privacy Policy</a> |
+                <a href="/sitemap.html">Sitemap</a>
+            </div>
+            <p>Made with in ❤️ You & Me.</p>
+            <p>©2025 Free EMI Calculator</p>
+        </div>
+    </footer>
+
+    <!-- Your logic -->
+    <script src="/js/script.js"></script>
+</body>
+</html>
