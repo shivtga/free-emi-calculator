@@ -1,140 +1,482 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free EMI Calculator</title>
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Free EMI Calculator — 2025 Guide</title>
+    <!-- Do not change stylesheet path -->
+    <link rel="stylesheet" href="/css/style.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <div class="logo-icon">F</div>
-                <span>Free EMI Calculator</span>
-            </div>
-            <div class="language-selector">
-                <span>English</span>
-            </div>
+<header>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">F</div>
+            <span>Free EMI Calculator</span>
         </div>
-    </header>
+        <div class="language-selector">
+            <span>English</span>
+        </div>
+    </div>
+</header>
 
-    <main>
-        <div class="container">
-            <h1>Free EMI Calculator</h1>
-            <div class="calculator-section">
-                <div class="calculator-section">
-                    <div class="chart-container">
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <div class="color-box principal-color"></div>
-                                <span>Principal amount</span>
-                            </div>
-                            <div class="legend-item">
-                                <div class="color-box interest-color"></div>
-                                <span>Interest amount</span>
-                            </div>
-                        </div>
-                        <div class="chart-placeholder">
-                            <!-- Placeholder for actual chart (e.g., Canvas or SVG) -->
-                        </div>
+<main>
+    <div class="container">
+        <h1>Free EMI Calculator</h1>
+
+        <!-- Calculator Block (unchanged visual structure; logic handled by /js/script.js if present) -->
+        <div class="calculator-section">
+            <div class="chart-container">
+                <div class="chart-legend">
+                    <div class="legend-item">
+                        <div class="color-box principal-color"></div>
+                        <span>Principal amount</span>
                     </div>
-                    <div class="calculator-inputs">
-                        <div class="input-group">
-                            <label for="currency">Select Your Currency:</label>
-                            <div class="input-field">
-                                <select id="currency">
-                                    <option value="$">$</option>
-                                    <option value="€">€</option>
-                                    <option value="£">£</option>
-                                    <option value="₹">₹</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <label for="loanAmount">Loan Amount</label>
-                            <div class="input-field">
-                                <span id="currencySymbol1">$</span>
-                                <input type="number" id="loanAmount" value="100000" min="0">
-                            </div>
-                        </div>
-                        <div class="slider-group">
-                            <label for="rateOfInterest">Rate of interest(p.a):</label>
-                            <div class="slider-container">
-                                <input type="range" id="rateOfInterest" class="slider" min="1" max="30" value="12.5" step="0.1">
-                                <div class="slider-value" id="rateOfInterestValue">12.5</div>
-                                <div class="slider-unit">PERCENT %</div>
-                            </div>
-                        </div>
-                        <div class="slider-group">
-                            <label for="loanTenure">Loan Tenure: (max 30)</label>
-                            <div class="slider-container">
-                                <input type="range" id="loanTenure" class="slider" min="1" max="30" value="6">
-                                <div class="slider-value" id="loanTenureValue">6</div>
-                                <div class="slider-unit">YEARS</div>
-                            </div>
-                        </div>
+                    <div class="legend-item">
+                        <div class="color-box interest-color"></div>
+                        <span>Interest amount</span>
+                    </div>
+                </div>
+                <div class="chart-placeholder" aria-label="Principal vs Interest Doughnut Placeholder">
+                    <!-- Placeholder for an actual chart (Canvas/SVG) if you wire one up later -->
+                </div>
+            </div>
+
+            <div class="calculator-inputs">
+                <div class="input-group">
+                    <label for="currency">Select Your Currency:</label>
+                    <div class="input-field">
+                        <select id="currency" aria-label="Currency">
+                            <option value="$">$</option>
+                            <option value="€">€</option>
+                            <option value="£">£</option>
+                            <option value="₹">₹</option>
+                        </select>
                     </div>
                 </div>
 
-                <div class="emi-result">
-                    <h2>EMI Calculator Result:</h2>
-                    <div class="result-item">
-                        <span class="label">Monthly EMI:</span>
-                        <span class="value" id="monthlyEMI">$1,981</span>
+                <div class="input-group">
+                    <label for="loanAmount">Loan Amount</label>
+                    <div class="input-field">
+                        <span id="currencySymbol1">$</span>
+                        <input type="number" id="loanAmount" value="100000" min="0" step="100" />
                     </div>
-                    <div class="result-item">
-                        <span class="label">Principal amount:</span>
-                        <span class="value" id="principalAmount">$100,000</span>
+                </div>
+
+                <div class="slider-group">
+                    <label for="rateOfInterest">Rate of interest (p.a):</label>
+                    <div class="slider-container">
+                        <input type="range" id="rateOfInterest" class="slider" min="1" max="30" value="12.5" step="0.1" />
+                        <div class="slider-value" id="rateOfInterestValue">12.5</div>
+                        <div class="slider-unit">PERCENT %</div>
                     </div>
-                    <div class="result-item">
-                        <span class="label">Total interest:</span>
-                        <span class="value" id="totalInterest">$42,640</span>
-                    </div>
-                    <div class="result-item">
-                        <span class="label">Total amount:</span>
-                        <span class="value" id="totalAmount">$142,640</span>
-                    </div>
-                    <div class="social-share">
-                        <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
-                        <button class="twitter"><i class="fab fa-twitter"></i> Twitter</button>
-                        <button class="email"><i class="fas fa-envelope"></i> E-Mail</button>
-                        <button class="pinterest"><i class="fab fa-pinterest"></i> Pinterest</button>
-                        <button class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
-                        <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
-                        <button class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</button>
+                </div>
+
+                <div class="slider-group">
+                    <label for="loanTenure">Loan Tenure: (max 30)</label>
+                    <div class="slider-container">
+                        <input type="range" id="loanTenure" class="slider" min="1" max="30" value="6" />
+                        <div class="slider-value" id="loanTenureValue">6</div>
+                        <div class="slider-unit">YEARS</div>
                     </div>
                 </div>
             </div>
-            <div class="info-section">
-                <h2>What is the EMI calculator in 2025?</h2>
-                <p>The EMI calculator is a financial tool used to calculate the monthly installment (EMI) that one has to pay for a loan. It considers factors such as the loan amount, interest rate, and loan tenure to arrive at the EMI. The EMI calculator in 2025, therefore, is essentially a computer program or an online tool that can be used to calculate the EMI amount for loans taken in 2025, based on the current interest rates and other factors.</p>
-                <p>An EMI calculator is an easy-to-use tool that allows you to calculate the EMI amount for a loan, by taking into account the loan amount, interest rate, and loan tenure. By entering these details, the EMI calculator instantly gives you the monthly installment amount that you would need to pay to repay the loan.</p>
-                <p>In 2025, you can use an EMI calculator to plan your loan repayments and determine the amount of loan you can afford to take. It can also help you compare different loan options and choose the one that best suits your financial needs and budget. Many financial institutions, banks, and online websites offer EMI calculators, which are easily accessible and user-friendly.</p>
+        </div>
 
-                <h2>Features of EMI Calculator</h2>
-                <p>The features of an EMI calculator in 2025 can vary depending on the provider. However, the following are some common features:</p>
-                <button class="read-more-button">Read More...</button>
+        <!-- Results -->
+        <div class="emi-result" aria-live="polite">
+            <h2>EMI Calculator Result:</h2>
+            <div class="result-item">
+                <span class="label">Monthly EMI:</span>
+                <span class="value" id="monthlyEMI">$1,981</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Principal amount:</span>
+                <span class="value" id="principalAmount">$100,000</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Total interest:</span>
+                <span class="value" id="totalInterest">$42,640</span>
+            </div>
+            <div class="result-item">
+                <span class="label">Total amount:</span>
+                <span class="value" id="totalAmount">$142,640</span>
+            </div>
+
+            <div class="social-share" aria-label="Share your result">
+                <button class="facebook"><i class="fab fa-facebook-f"></i> Facebook</button>
+                <button class="twitter"><i class="fab fa-twitter"></i> Twitter</button>
+                <button class="email"><i class="fas fa-envelope"></i> E-Mail</button>
+                <button class="pinterest"><i class="fab fa-pinterest"></i> Pinterest</button>
+                <button class="linkedin"><i class="fab fa-linkedin-in"></i> LinkedIn</button>
+                <button class="whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                <button class="telegram"><i class="fab fa-telegram-plane"></i> Telegram</button>
             </div>
         </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="/">Home</a> |
-                <a href="/about.html">About</a> |
-                <a href="/disclaimer.html">Disclaimer</a> |
-                <a href="/privacy-policy.html">Privacy Policy</a> |
-                <a href="/sitemap.html">Sitemap</a>
-            </div>
-            <p>Made with in ❤️ You & Me.</p>
-            <p>©2025 Free EMI Calculator</p>
+        <!-- 1500-word Article with logical flow, headings/subheadings, bullets, and tables -->
+        <article class="info-section" id="emi-guide">
+            <h2>Understanding EMIs in 2025: A Complete Guide</h2>
+
+            <!-- Introduction -->
+            <section id="introduction">
+                <h3>Introduction</h3>
+                <p>
+                    An Equated Monthly Installment (EMI) is the fixed amount you repay each month towards a loan. It includes
+                    both the principal you borrowed and the interest charged by the lender. Whether you are planning to buy a
+                    home, a car, fund an education, or consolidate debt, understanding how EMIs are computed—and how you can
+                    optimize them—will help you borrow confidently and repay comfortably. This guide explains EMI mechanics,
+                    offers practical strategies to lower interest outgo, and provides ready-to-use tables so you can compare
+                    loan options with clarity. It’s written for first-time borrowers and seasoned shoppers alike, with a focus
+                    on simple explanations and actionable steps.
+                </p>
+                <p>
+                    The calculator above lets you experiment with <strong>loan amount</strong>, <strong>interest rate</strong>,
+                    and <strong>tenure</strong>. Adjust the sliders to instantly see how your monthly EMI and total interest
+                    change. Then, use the sections below to interpret those numbers, plan your budget, and pick the repayment
+                    strategy that suits you best.
+                </p>
+
+                <!-- Table of Contents -->
+                <nav aria-label="Table of Contents">
+                    <h4>Table of Contents</h4>
+                    <ul>
+                        <li><a href="#how-emi-works">How EMI Works</a></li>
+                        <li><a href="#emi-formula">The EMI Formula Explained</a></li>
+                        <li><a href="#factors">Key Factors That Influence Your EMI</a></li>
+                        <li><a href="#choose-loan">How to Choose the Right Loan</a></li>
+                        <li><a href="#compare-table">Loan Type Comparison (Table)</a></li>
+                        <li><a href="#amortization">Sample Amortization Snapshot (Table)</a></li>
+                        <li><a href="#strategies">Strategies to Lower Your EMI or Total Interest</a></li>
+                        <li><a href="#pitfalls">Common Pitfalls &amp; How to Avoid Them</a></li>
+                        <li><a href="#faqs">FAQs</a></li>
+                        <li><a href="#conclusion">Conclusion &amp; Next Steps</a></li>
+                    </ul>
+                </nav>
+            </section>
+
+            <!-- Body -->
+            <section id="how-emi-works">
+                <h3>How EMI Works</h3>
+                <p>
+                    Every EMI has two components: a <em>principal</em> portion that reduces your outstanding balance and an
+                    <em>interest</em> portion that compensates the lender. At the start of a loan, interest forms a larger share
+                    of each payment because it is calculated on a higher outstanding principal. As your principal reduces, the
+                    interest component shrinks and the principal component grows—a process known as <strong>amortization</strong>.
+                </p>
+                <ul>
+                    <li><strong>Early EMIs:</strong> Interest-heavy, principal-light.</li>
+                    <li><strong>Midway:</strong> Principal share rises, interest share falls.</li>
+                    <li><strong>Towards the end:</strong> Mostly principal with minimal interest.</li>
+                </ul>
+                <p>
+                    This shifting mix is why early <strong>prepayments</strong> (extra payments towards principal) can meaningfully
+                    reduce your total interest outgo: you are cutting the base on which future interest is computed.
+                </p>
+            </section>
+
+            <section id="emi-formula">
+                <h3>The EMI Formula Explained</h3>
+                <p>
+                    For most fixed-rate loans, the EMI is calculated using the standard annuity formula. If <em>P</em> is the
+                    loan amount, <em>R</em> is the monthly interest rate (annual rate divided by 12), and <em>N</em> is the total
+                    number of monthly installments, then:
+                </p>
+                <p>
+                    <code>EMI = P × R × (1 + R)<sup>N</sup> ÷ [(1 + R)<sup>N</sup> − 1]</code>
+                </p>
+                <p>
+                    The calculator applies this logic under the hood to display your monthly payment, total interest, and total
+                    amount payable. While the math may look complex, the consequences are straightforward: a lower <em>R</em>
+                    (rate) or a smaller <em>N</em> (tenure) reduces total interest, though shortening tenure can raise monthly
+                    EMIs. Balancing these levers is the art of smart borrowing.
+                </p>
+            </section>
+
+            <section id="factors">
+                <h3>Key Factors That Influence Your EMI</h3>
+                <h4>1) Loan Amount</h4>
+                <p>
+                    A higher principal expands your EMI linearly—double the principal and, all else equal, the EMI nearly
+                    doubles. Borrow only what you truly need and preserve a buffer for emergencies instead of pushing your
+                    monthly budget to the limit.
+                </p>
+
+                <h4>2) Interest Rate</h4>
+                <p>
+                    Even small changes in the rate significantly affect the total interest over long tenures. Shop around, seek
+                    pre-approvals, and negotiate. If your credit score improves later, consider refinancing or a balance transfer.
+                </p>
+
+                <h4>3) Tenure</h4>
+                <p>
+                    Longer tenures lower the monthly EMI but increase the overall interest. Shorter tenures are the reverse.
+                    Use the calculator to find a sweet spot where your EMI is comfortable and the total interest remains within
+                    reason.
+                </p>
+
+                <h4>4) Rate Type</h4>
+                <ul>
+                    <li><strong>Fixed-rate:</strong> Predictable EMIs; fewer surprises.</li>
+                    <li><strong>Floating-rate:</strong> EMIs (or tenure) may change with benchmark movements; potentially
+                        cheaper over time but with variability.</li>
+                </ul>
+
+                <h4>5) Fees &amp; Charges</h4>
+                <p>
+                    Processing fees, legal charges, valuation fees, and prepayment penalties can add to your effective cost.
+                    Always compare <em>total cost of borrowing</em>, not just the headline rate.
+                </p>
+            </section>
+
+            <section id="choose-loan">
+                <h3>How to Choose the Right Loan</h3>
+                <p>Follow this step-by-step approach to evaluate options:</p>
+                <ol>
+                    <li><strong>Define your purpose:</strong> Home, car, education, personal, or business needs.</li>
+                    <li><strong>Set a budget:</strong> Target EMI ≤ 30–40% of your net monthly income after mandatory expenses.</li>
+                    <li><strong>Check your credit:</strong> A higher score improves approval odds and rate offers.</li>
+                    <li><strong>Gather quotes:</strong> Compare interest, fees, and flexibility (prepayment rules, part-payment).</li>
+                    <li><strong>Simulate scenarios:</strong> Use this calculator to stress-test higher rates or shorter tenures.</li>
+                    <li><strong>Read the fine print:</strong> Understand reset clauses, penalty triggers, insurance bundling, and foreclosure terms.</li>
+                </ol>
+            </section>
+
+            <!-- Table 1: Comparison -->
+            <section id="compare-table">
+                <h3>Loan Type Comparison (At a Glance)</h3>
+                <p>
+                    Use the quick comparison below to see how common loan categories typically differ. These are general
+                    patterns; individual lenders’ terms may vary.
+                </p>
+                <div style="overflow-x:auto;">
+                    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; background:#fff;">
+                        <thead>
+                            <tr>
+                                <th>Loan Type</th>
+                                <th>Typical Tenure</th>
+                                <th>Rate Style</th>
+                                <th>Common Use</th>
+                                <th>Pros</th>
+                                <th>Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Home Loan</td>
+                                <td>10–30 years</td>
+                                <td>Fixed or Floating</td>
+                                <td>Property purchase/construction</td>
+                                <td>Lower rates; long tenure lowers EMI</td>
+                                <td>Large total interest if tenure is very long</td>
+                            </tr>
+                            <tr>
+                                <td>Car Loan</td>
+                                <td>3–7 years</td>
+                                <td>Mostly Fixed</td>
+                                <td>New or used vehicles</td>
+                                <td>Quick approvals; secured by vehicle</td>
+                                <td>Depreciating asset; fees can add up</td>
+                            </tr>
+                            <tr>
+                                <td>Personal Loan</td>
+                                <td>1–6 years</td>
+                                <td>Mostly Fixed</td>
+                                <td>General expenses, emergencies</td>
+                                <td>Unsecured; fast disbursal</td>
+                                <td>Higher rates; watch prepayment rules</td>
+                            </tr>
+                            <tr>
+                                <td>Education Loan</td>
+                                <td>5–15 years</td>
+                                <td>Fixed or Floating</td>
+                                <td>Tuition and living costs</td>
+                                <td>Moratorium options; tax benefits (varies)</td>
+                                <td>Proof of admission and co-applicant often needed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Table 2: Amortization Snapshot -->
+            <section id="amortization">
+                <h3>Sample Amortization Snapshot</h3>
+                <p>
+                    The table below illustrates how a fixed-rate loan’s EMI breaks into interest and principal over time. Early
+                    payments are interest-heavy; later payments chip away at principal faster.
+                </p>
+                <div style="overflow-x:auto;">
+                    <table border="1" cellpadding="8" cellspacing="0" style="width:100%; border-collapse:collapse; background:#fff;">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Opening Balance</th>
+                                <th>EMI</th>
+                                <th>Interest</th>
+                                <th>Principal</th>
+                                <th>Closing Balance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>100,000</td>
+                                <td>1,981</td>
+                                <td>1,042</td>
+                                <td>939</td>
+                                <td>99,061</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>99,061</td>
+                                <td>1,981</td>
+                                <td>1,030</td>
+                                <td>951</td>
+                                <td>98,110</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>98,110</td>
+                                <td>1,981</td>
+                                <td>1,018</td>
+                                <td>963</td>
+                                <td>97,147</td>
+                            </tr>
+                            <tr>
+                                <td>…</td>
+                                <td>…</td>
+                                <td>…</td>
+                                <td>…</td>
+                                <td>…</td>
+                                <td>…</td>
+                            </tr>
+                            <tr>
+                                <td>72 (End)</td>
+                                <td>1,973</td>
+                                <td>1,981</td>
+                                <td>21</td>
+                                <td>1,960</td>
+                                <td>0</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:0.9em; color:#555;">
+                    Note: Numbers are illustrative to show the trend. Use the calculator to generate figures tailored to your
+                    amount, rate, and tenure.
+                </p>
+            </section>
+
+            <section id="strategies">
+                <h3>Strategies to Lower Your EMI or Total Interest</h3>
+                <h4>A) Reduce the Rate</h4>
+                <ul>
+                    <li><strong>Improve credit score:</strong> Pay bills on time, lower credit utilization, and fix report errors.</li>
+                    <li><strong>Compare lenders:</strong> Request written quotes; negotiate using the best offer.</li>
+                    <li><strong>Consider balance transfers:</strong> Switch to a lender offering a lower rate, after accounting for fees.</li>
+                </ul>
+
+                <h4>B) Optimize the Tenure</h4>
+                <ul>
+                    <li><strong>Longer tenure:</strong> Lowers monthly EMI—useful for cash-flow relief.</li>
+                    <li><strong>Shorter tenure:</strong> Raises EMI but slashes total interest—ideal if income is stable or rising.</li>
+                </ul>
+
+                <h4>C) Prepay Strategically</h4>
+                <ul>
+                    <li><strong>Lump-sum prepayment:</strong> Direct extra cash (bonus, tax refund) to principal early in the loan.</li>
+                    <li><strong>Part-payments:</strong> Make smaller, regular extra payments; they compound meaningfully over time.</li>
+                    <li><strong>Refinance + prepay:</strong> Refinance to a lower rate and prepay simultaneously to accelerate savings.</li>
+                </ul>
+
+                <h4>D) Avoid Fee Traps</h4>
+                <ul>
+                    <li>Watch processing and legal fees; they raise the effective cost.</li>
+                    <li>Avoid products with harsh prepayment penalties unless the rate advantage is substantial.</li>
+                    <li>Check if insurance is optional or bundled automatically into the loan cost.</li>
+                </ul>
+            </section>
+
+            <section id="pitfalls">
+                <h3>Common Pitfalls &amp; How to Avoid Them</h3>
+                <ul>
+                    <li><strong>Over-borrowing:</strong> EMIs that exceed a comfortable share of income invite stress. Keep buffers.</li>
+                    <li><strong>Ignoring variable rates:</strong> For floating loans, plan for rate rises; stress-test your budget.</li>
+                    <li><strong>Skipping the fine print:</strong> Hidden charges and reset clauses can surprise you later.</li>
+                    <li><strong>Delaying prepayment:</strong> Early prepayment saves the most interest—don’t postpone it.</li>
+                </ul>
+            </section>
+
+            <section id="faqs">
+                <h3>Frequently Asked Questions (FAQs)</h3>
+
+                <h4>1) Does a lower EMI always mean a cheaper loan?</h4>
+                <p>
+                    Not necessarily. A lower EMI from a very long tenure can increase the total interest. Compare the
+                    <strong>total amount payable</strong> alongside the EMI.
+                </p>
+
+                <h4>2) Is floating rate better than fixed?</h4>
+                <p>
+                    It depends on rate outlook and your risk tolerance. Fixed gives predictability; floating may cost less
+                    overall if rates trend downward, but can also rise.
+                </p>
+
+                <h4>3) How often should I revisit my loan terms?</h4>
+                <p>
+                    Review at least annually or whenever rates shift meaningfully. Consider refinancing if you can recover fees
+                    through interest savings within a reasonable time.
+                </p>
+
+                <h4>4) What’s the best prepayment strategy?</h4>
+                <p>
+                    There is no one-size-fits-all answer. A useful rule is to prepay early and consistently, focusing on the
+                    years when interest dominates your EMIs.
+                </p>
+            </section>
+
+            <!-- Conclusion -->
+            <section id="conclusion">
+                <h3>Conclusion &amp; Next Steps</h3>
+                <p>
+                    EMIs are the backbone of modern borrowing. By understanding how principal and interest interact, and by
+                    experimenting with loan amount, rate, and tenure, you can design a repayment plan that supports your goals
+                    rather than constraining them. Use the calculator above to test scenarios: What if the rate rises by 1%?
+                    What if you make a lump-sum prepayment after year two? How does shortening the tenure by one year affect the
+                    total interest? The answers will bring clarity and confidence as you commit to a borrowing plan.
+                </p>
+                <p>
+                    Once you’ve identified a comfortable EMI and a manageable total cost, shortlist lenders, collect written
+                    offers, and compare the all-in numbers (including fees). With a few smart choices today—like maintaining a
+                    strong credit profile and planning early prepayments—you can save substantially over the life of your loan
+                    and stay financially flexible.
+                </p>
+            </section>
+
+            <button class="read-more-button" onclick="document.getElementById('emi-guide').scrollIntoView({behavior:'smooth'});">
+                Back to Top
+            </button>
+        </article>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-links">
+            <a href="/">Home</a> |
+            <a href="/about.html">About</a> |
+            <a href="/disclaimer.html">Disclaimer</a> |
+            <a href="/privacy-policy.html">Privacy Policy</a> |
+            <a href="/sitemap.html">Sitemap</a>
         </div>
-    </footer>
+        <p>Made with in ❤️ You &amp; Me.</p>
+        <p>©2025 Free EMI Calculator</p>
+    </div>
+</footer>
 
-    <!-- Your logic -->
-    <script src="/js/script.js"></script>
+<!-- Keep external script reference as-is; no changes required here -->
+<script src="/js/script.js"></script>
 </body>
 </html>
